@@ -97,14 +97,14 @@ bool GameScene::init()
 
 void GameScene::addStartLine()
 {
-	auto b = Block::createBlocks(Size(winSize.width, winSize.height / 4), Color3B::YELLOW, "", 0, Color4B::WHITE);
+	auto b = Block::createBlocks(Size(winSize.width, winSize.height / 4), Color3B::YELLOW, "", 0, Color3B::WHITE);
 	b->setRow(0);
 	gameLayer->addChild(b);
 }
 
 void GameScene::addEndLine()
 {
-	auto b = Block::createBlocks(winSize, Color3B::GREEN, "Congratulations", 30, Color4B::WHITE);
+	auto b = Block::createBlocks(winSize, Color3B::GREEN, "Congratulations", 30, Color3B::WHITE);
 	b->setPosition(0, winSize.height);
 	b->setRow(4);
 	gameLayer->addChild(b);
@@ -120,7 +120,10 @@ void GameScene::addNormalLine(int row)
 	//每行有4个黑白块
 	for (int i = 0; i < 4; ++i)
 	{
-		b = Block::createBlocks(Size(winSize.width / 4 - 1, winSize.height / 4 - 1), i == black_col ? Color3B::BLACK : Color3B::WHITE, "", 0, Color4B::WHITE);
+		if(row == 1)
+			b = Block::createBlocks(Size(winSize.width / 4 - 1, winSize.height / 4 - 1), i == black_col ? Color3B::BLACK : Color3B::WHITE, i == black_col ? "Start" : "", 20, Color3B::GRAY);
+		else
+			b = Block::createBlocks(Size(winSize.width / 4 - 1, winSize.height / 4 - 1), i == black_col ? Color3B::BLACK : Color3B::WHITE, "", 0, Color3B::WHITE);
 		b->setPosition(i * winSize.width / 4, row * winSize.height / 4);
 		b->setRow(row);
 		gameLayer->addChild(b);
