@@ -7,7 +7,7 @@ Vector<Block*> * Block::getBlocks()
 	return Block::blocks;
 }
 
-Block* Block::createBlocks(Size block_size, Color3B block_color, string label, float label_size, Color4B label_color)
+Block* Block::createBlocks(Size block_size, Color3B block_color, string label, float label_size, Color3B label_color)
 {
 	Block* pRet = new Block();
 	if (pRet && pRet->init(block_size, block_color, label, label_size, label_color))
@@ -24,7 +24,7 @@ Block* Block::createBlocks(Size block_size, Color3B block_color, string label, f
 	}
 }
 
-bool Block::init(Size block_size, Color3B block_color, string label, float label_size, Color4B label_color)
+bool Block::init(Size block_size, Color3B block_color, string label, float label_size, Color3B label_color)
 {
 	if (!Sprite::init())
 		return false;
@@ -38,6 +38,7 @@ bool Block::init(Size block_size, Color3B block_color, string label, float label
 	//¿éÖÐµÄÎÄ×Ö
 	auto l = Label::createWithSystemFont(label, "Consolas", label_size);
 	l->setPosition(block_size / 2);
+	l->setColor(label_color);
 	this->addChild(l);
 
 	return true;

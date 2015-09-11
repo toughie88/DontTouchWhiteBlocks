@@ -10,8 +10,8 @@ using namespace std;
 class Block : public Sprite
 {
 public:
-	static Block* createBlocks(Size block_size, Color3B block_color, string label, float label_size, Color4B label_color);
-	virtual bool init(Size block_size, Color3B block_color, string label, float label_size, Color4B label_color);
+	static Block* createBlocks(Size block_size, Color3B block_color, string label, float label_size, Color3B label_color);
+	virtual bool init(Size block_size, Color3B block_color, string label, float label_size, Color3B label_color);
 
 	int getRow();						//获取行号
 	void setRow(int row);				//设置行号
